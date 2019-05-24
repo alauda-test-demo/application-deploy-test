@@ -18,5 +18,21 @@ pipeline {
         }
       }
     }
+    
+    stage('int'){
+      steps{
+        container('tools'){
+          script{
+            alaudaDevops.withCluster('int'){
+              def ns = alaudaDevops.selector('namespace')
+              ns.withEach {
+                echo "${it.name()}"
+              }
+            }
+          }
+        }
+      }
+    }
+    
   }
 }
