@@ -11,7 +11,7 @@ pipeline {
             alaudaDevops.withCluster(){
               def ns = alaudaDevops.selector('namespace')
               ns.withEach {
-                echo "${it.name}"
+                echo "${it.name()}"
               }
             }
           }
